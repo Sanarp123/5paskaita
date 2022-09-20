@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Files, session, server</title>
+    <title>Files, session, cookies</title>
 </head>
 <body>
 <!-- visi sitie yra privalomi formojoe uploadinant failus -->
@@ -41,16 +41,31 @@ if(isset($_POST["upload"])){
     $random_words = ["a","b","c","d","e"];
     // 3. sugeneruoti pavadinima
     
-    $random_string = "";
-    for($i = 0; $i <=22; $i++) {
-        $random_number = rand(0,count($random_words)-1); // 0, 1, 2, 3, 4
-        // $random_string = $random_string . $random_words[$random_number];
-        $random_string .= $random_words[$random_number];
-    }
+    // $random_string = "";
+    // for($i = 0; $i <=22; $i++) {
+    //     $random_number = rand(0,count($random_words)-1); // 0, 1, 2, 3, 4
+    //     // $random_string = $random_string . $random_words[$random_number];
+    //     $random_string .= $random_words[$random_number];
+    // }
+
+    // pagal base65
+
+$file_name_generated = $time. $tekstas.".".$file_extension;
+
+$time = time();
+//time dabartinis laikas sekundemis nuo 1970
+$random_string = $file_name_array[0].$time;
 
 
-    $file_name_generated = $random_string .".".$file_extension;
+$file_name_generated = $random_string .".".$file_extension;
 
+
+var_dump($file_name_generated); 
+
+
+
+
+$file_path = $file_dir . $file_name_generated;
 
     var_dump($file_name_generated); 
 
