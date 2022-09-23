@@ -97,11 +97,4 @@
 ?>
 
 
-<?php 
-//$_FILES - superglobalus kintamasis, kurio pagalba mes per forma galime įkelti failus
-//$_COOKIES
-//$_SESSION
 
-
-
-//Įkelti vieną failą į serveri, į katalogą "uploads"
