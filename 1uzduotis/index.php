@@ -29,7 +29,7 @@
         $file_name = $_POST["file_name"];
         $file = $_FILES["file"];
 
-         var_dump($file);
+        //  var_dump($file);
 
         // failo aplankas
         $file_dir = "uploads/";
@@ -47,18 +47,16 @@
         //2. mums reikia tureti atsitiktiniu zodziu masyva
         //3. sugeneruoti pavadinima
 
-        // parduotuve.sql 
-        //parduotuve
-        //sql
-
         //explode - padalina stringa i masyva pagal nurodyta simboli
         //parduotuve.sql per taskiuka -> ["parduotuve", "sql"]
         //kiausinis, obuolys, kriause, limonadas -> ["kiausinis", "obuolys", "kriause", "limonadas"]
         $file_name_array = explode(".", $file["name"]);
         //failo pletini
         $file_extension =  $file_name_array[1];
+        $file_size =  $file["size"];
 
-        if($file_extension=="pdf"){
+
+        if(($file_extension=="pdf") && ($file_size <1000000)) {
         
         // $random_words = ["a","b","c","d","e","f","g"];
 
@@ -71,24 +69,13 @@
         //     $random_string .= $random_words[$random_number];
 
         // }
-        $time = time();
+        // $time = time();
             //time dabartinis laikas sekundemis nuo 1970
-        $random_string = $file_name_array[0].$time;
+        // $random_string = $file_name_array[0].$time;
+        // $file_name_generated = $random_string .".".$file_extension;
+        // var_dump($file_name_generated); 
 
-
-        $file_name_generated = $random_string .".".$file_extension;
-
-
-        var_dump($file_name_generated); 
-
-
-
-
-         $file_path = $file_dir . $file_name_generated;
-
-         //leisti ikelti tik jpg
-         //apriboti ikelimo failo didi
-         //ir t.t.
+         $file_path = $file_dir . $file["name"];
 
          //move_uploaded_file - perkeliame faila i kita vieta
          //jeigu ikelimas sekmingas - true, ir ikelia faila
@@ -99,11 +86,9 @@
          } else {
             echo "Failo ikelti nepavyko";
          }
-
-        //  var_dump( $file_path);
     }
     else {
-        echo ("Keliame tik pdf failus");
+        echo ("Keliame tik pdf failus ir mazesnius uz 1mb");
         }
 }
 
